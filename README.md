@@ -1,4 +1,4 @@
-![image](https://github.com/user-attachments/assets/e7f43f4d-fbd3-4f9f-8de1-1fedf817a182)# LostItemTracker
+# LostItemTracker
 A Computer Vision Equipped Robot that finds your lost items
 
 - Images were web scraped using BeautifulSoup (bs4) - classes scraped include backpacks, travel baggage, phones, water bottles, wallets, purses, and other commonly forgotten items
