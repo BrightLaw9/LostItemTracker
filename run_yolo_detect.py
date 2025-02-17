@@ -65,6 +65,9 @@ elif 'usb' in img_source:
 elif 'picamera' in img_source:
     source_type = 'picamera'
     picam_idx = int(img_source[8:])
+elif 'cam' in img_source:
+    source_type = 'cam'
+    cam_idx = 0
 else:
     print(f'Input {img_source} is invalid. Please try again.')
     sys.exit(0)
@@ -77,7 +80,7 @@ if user_res:
 
 # Check if recording is valid and set up recording
 if record:
-    if source_type not in ['video','usb']:
+    if source_type not in ['video','usb', 'cam']:
         print('Recording only works for video and camera sources. Please try again.')
         sys.exit(0)
     if not user_res:
@@ -99,10 +102,11 @@ elif source_type == 'folder':
         _, file_ext = os.path.splitext(file)
         if file_ext in img_ext_list:
             imgs_list.append(file)
-elif source_type == 'video' or source_type == 'usb':
+elif source_type == 'video' or source_type == 'usb' or source_type == 'cam':
 
     if source_type == 'video': cap_arg = img_source
     elif source_type == 'usb': cap_arg = usb_idx
+    elif source_type == 'cam': cap_arg = cam_idx
     cap = cv2.VideoCapture(cap_arg)
 
     # Set camera or video resolution if specified by user
@@ -146,7 +150,7 @@ while True:
             print('Reached end of the video file. Exiting program.')
             break
     
-    elif source_type == 'usb': # If source is a USB camera, grab frame from camera
+    elif source_type == 'usb' or source_type == 'cam': # If source is a USB camera, grab frame from camera
         ret, frame = cap.read()
         if (frame is None) or (not ret):
             print('Unable to read frames from the camera. This indicates the camera is disconnected or not working. Exiting program.')
@@ -204,7 +208,7 @@ while True:
             object_count = object_count + 1
 
     # Calculate and draw framerate (if using video, USB, or Picamera source)
-    if source_type == 'video' or source_type == 'usb' or source_type == 'picamera':
+    if source_type == 'video' or source_type == 'usb' or source_type == 'picamera' or source_type == 'cam':
         cv2.putText(frame, f'FPS: {avg_frame_rate:0.2f}', (10,20), cv2.FONT_HERSHEY_SIMPLEX, .7, (0,255,255), 2) # Draw framerate
     
     # Display detection results
@@ -215,7 +219,7 @@ while True:
     # If inferencing on individual images, wait for user keypress before moving to next image. Otherwise, wait 5ms before moving to next frame.
     if source_type == 'image' or source_type == 'folder':
         key = cv2.waitKey()
-    elif source_type == 'video' or source_type == 'usb' or source_type == 'picamera':
+    elif source_type == 'video' or source_type == 'usb' or source_type == 'picamera' or source_type == 'cam':
         key = cv2.waitKey(5)
     
     if key == ord('q') or key == ord('Q'): # Press 'q' to quit
@@ -242,7 +246,7 @@ while True:
 
 # Clean up
 print(f'Average pipeline FPS: {avg_frame_rate:.2f}')
-if source_type == 'video' or source_type == 'usb':
+if source_type == 'video' or source_type == 'usb' or source_type == 'cam':
     cap.release()
 elif source_type == 'picamera':
     cap.stop()

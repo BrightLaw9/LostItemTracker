@@ -29,6 +29,7 @@ Video / images files can be inputted:
 python run_yolo_detect.py --model best.pt --source {your_image_name}.jpg
 ```
 Support for PiCamera in script - need testing
+Press P for picture, Q to quit
 
 # Training Curves and Validation Predictions
 ![val_batch1_pred](https://github.com/user-attachments/assets/fad043eb-1b4e-4baa-8bda-5f5f13993e86)
