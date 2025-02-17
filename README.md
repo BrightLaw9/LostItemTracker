@@ -10,6 +10,7 @@ A Computer Vision Equipped Robot that finds your lost items
 
 # To run this project
 Clone the repository
+<br /><br />
 Install dependencies: 
 ```
 pip install -r requirements.txt
