@@ -36,3 +36,9 @@ Press P for picture, Q to quit
 ![PR_curve](https://github.com/user-attachments/assets/d481ee73-b48b-48ba-9521-fc44090e5c43)
 ![confusion_matrix](https://github.com/user-attachments/assets/20b0cdec-bd69-41dd-89a2-86df8743ff54)
 ![results](https://github.com/user-attachments/assets/ef5de9d0-c28d-4162-b81e-bacdc38aa191)
+
+# More inference time snapshots
+<img src="https://github.com/user-attachments/assets/cc09912a-9a9d-4f7a-9426-e9c895ec65e7" width=250>&nbsp;&nbsp;&nbsp;
+<img src="https://github.com/user-attachments/assets/da5bfe80-99bf-43ee-95c9-7b1c201e995e" width=250>&nbsp;&nbsp;&nbsp;
+<img src="https://github.com/user-attachments/assets/b0acce88-20e8-4848-948c-baa3c5eca4ae" width=250>
+
